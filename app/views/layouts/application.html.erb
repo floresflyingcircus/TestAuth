@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TestAuth</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+	<div id="user header">
+		<% if current_user %>
+		    <!-- confused about use of current_user.email not @current_user.email --> 
+		    Logged in as <%= current_user.email %>
+		    <%= link_to "Log Out", logout_path %>
+		<% else %>
+		    <%= link_to "Sign Up", signup_path %>
+		    <%= link_to "Log In", login_path %>
+
+		<% end %>
+	</div>
+
+<%= yield %>
+
+</body>
+</html>
